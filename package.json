@@ -1,10 +1,12 @@
 {
-  "name": "braingames",
-  "version": "1.0.0",
+  "name": "berezinsbraingames",
+  "version": "1.0.1",
   "description": "BG",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -12,6 +14,9 @@
   },
   "keywords": [
     "braingames"
+  ],
+  "files": [
+    "dist"
   ],
   "author": "Sergei Berezin",
   "license": "ISC",
@@ -24,5 +29,8 @@
     "@babel/core": "^7.3.3",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1"
+  },
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
   }
 }
