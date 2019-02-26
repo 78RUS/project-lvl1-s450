@@ -1,10 +1,8 @@
 {
   "name": "berezinsbraingames",
   "version": "1.0.1",
-  "description": "BG",
-  "main": "index.js",
+  "description": "My first Hexlet project.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
