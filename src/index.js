@@ -40,7 +40,7 @@ export const brainEven = () => {
     }
     const rightAnswer = (isEven(random)) ? 'yes' : 'no';
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-    console.log(`Let's try again, ${userName}!`)
+    console.log(`Let's try again, ${userName}!`);
     return 0;
   };
   const userName = greetingBrainEven();
