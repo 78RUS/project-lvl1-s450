@@ -37,9 +37,7 @@
     "readline-sync": "^1.4.9"
   },
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
-  },
-  "bin": {
-    "brain-games": "dist/bin/brain-even.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   }
 }
