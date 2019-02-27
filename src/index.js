@@ -34,6 +34,6 @@ export const brainEven = () => {
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'`);
     return 0;
   };
-  const userName = greetingBrainEven()
+  const userName = greetingBrainEven();
   process(0, userName);
 };

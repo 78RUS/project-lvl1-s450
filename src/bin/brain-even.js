@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { greetingBrainEven, brainEven } from '..';
+import { brainEven } from '..';
 
 brainEven();
