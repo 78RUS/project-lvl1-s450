@@ -38,5 +38,8 @@
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
+  },
+  "bin": {
+    "brain-games": "dist/bin/brain-even.js"
   }
 }
