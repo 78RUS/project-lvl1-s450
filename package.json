@@ -1,6 +1,6 @@
 {
   "name": "berezinsbraingames",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "My first Hexlet project.",
   "scripts": {
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
