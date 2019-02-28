@@ -17,31 +17,30 @@ export const greetingBrainEven = () => {
   return userName;
 };
 
-
 export const randInt = (min = 1, max = 100) => Math.floor(Math.random() * (max - min)) + min;
 export const isEven = num => num % 2 === 0;
 
+const winCount = 3;
+const winSign = 1;
+const loseSign = 0;
+
 export const brainEven = () => {
   const process = (acc, userName) => {
-    if (acc === 3) {
+    if (acc === winCount) {
       console.log(`Congratulations, ${userName}!`);
-      return 1;
+      return winSign;
     }
-    const random = randInt();
-    console.log(`Question: ${random}`);
+    const randomNumber = randInt();
+    console.log(`Question: ${randomNumber}`);
     const answer = readlineSync.question('Your answer: ');
-    if (isEven(random) && answer === 'yes') {
+    const rightAnswer = (isEven(randomNumber)) ? 'yes' : 'no';
+    if (answer === rightAnswer) {
       console.log('Correct!');
       return process(acc + 1, userName);
     }
-    if (!isEven(random) && answer === 'no') {
-      console.log('Correct!');
-      return process(acc + 1, userName);
-    }
-    const rightAnswer = (isEven(random)) ? 'yes' : 'no';
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+    console.log(`'${answer}' is wrong answer ;(.Correct answer was '${rightAnswer}'.`);
     console.log(`Let's try again, ${userName}!`);
-    return 0;
+    return loseSign;
   };
   const userName = greetingBrainEven();
   process(0, userName);
