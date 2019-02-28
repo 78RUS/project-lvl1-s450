@@ -1,6 +1,6 @@
 {
   "name": "berezinsbraingames",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "My first Hexlet project.",
   "scripts": {
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
@@ -37,7 +37,7 @@
     "eslint-plugin-import": "^2.16.0"
   },
   "bin": {
-    "brain-games": "dist/bin/games/brain-games.js",
+    "brain-games": "dist/bin/brain-games.js",
     "brain-even": "dist/bin/games/brain-even.js",
     "brain-calc": "dist/bin/games/brain-calc.js"
   }
