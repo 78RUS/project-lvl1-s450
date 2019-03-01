@@ -4,15 +4,18 @@ import readlineSync from 'readline-sync';
 export const randInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 export const gameStart = (gameData, rules) => {
-  console.log('Welcome to the Brain Games! \n');
-  console.log(`${rules}`);
-  const playerName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${playerName}!`);
+  const greeting = () => {
+    console.log('Welcome to the Brain Games! \n');
+    console.log(`${rules}`);
+    const playerName = readlineSync.question('May I have your name? ');
+    console.log(`Hello, ${playerName}!`);
+    return playerName;
+  }
 
-  const iter = (playerName, rounds) => {
+  const iter = (playerName, currentRound) => {
     const currentGame = gameData();
     const maxRounds = currentGame['rounds']
-    if (rounds === maxRounds) {
+    if (currentRound === maxRounds) {
       console.log(`Congratulations, ${playerName}!`);
       return true;
     }
@@ -28,5 +31,6 @@ export const gameStart = (gameData, rules) => {
     console.log(`Let's try again, ${playerName}!`);
     return false;
   }
+  const playerName = greeting();
   iter(playerName, 0);
 };
