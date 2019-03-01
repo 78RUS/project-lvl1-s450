@@ -4,7 +4,7 @@ import readlineSync from 'readline-sync';
 export const rules = 'Answer "yes" if number even otherwise answer "no".\n'
 
 
-export const game = () => {
+export const gameData = () => {
   const rounds = 3
   const random = randInt(1, 100)
   const question = `Question: ${random}`
