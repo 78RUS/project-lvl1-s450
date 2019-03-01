@@ -25,7 +25,7 @@ export const gameStart = (gameData, rules) => {
     const rightAnswer = currentGame['rightAnswer'];
     if (answer === rightAnswer) {
       console.log('Correct!');
-      return iter(playerName, rounds + 1);
+      return iter(playerName, currentRound + 1);
     }
     console.log(`'${answer}' is wrong answer ;(.Correct answer was '${rightAnswer}'.`);
     console.log(`Let's try again, ${playerName}!`);
