@@ -10,19 +10,19 @@ export const gameStart = (gameData, rules) => {
     const playerName = readlineSync.question('May I have your name? ');
     console.log(`Hello, ${playerName}!`);
     return playerName;
-  }
+  };
 
   const iter = (playerName, currentRound) => {
     const currentGame = gameData();
-    const maxRounds = currentGame['rounds']
+    const maxRounds = currentGame.rounds;
     if (currentRound === maxRounds) {
       console.log(`Congratulations, ${playerName}!`);
       return true;
     }
-    const question = currentGame['question'];
+    const { question } = currentGame;
     console.log(question);
     const answer = readlineSync.question('Your answer: ');
-    const rightAnswer = currentGame['rightAnswer'];
+    const { rightAnswer } = currentGame;
     if (answer === rightAnswer) {
       console.log('Correct!');
       return iter(playerName, currentRound + 1);
@@ -30,7 +30,7 @@ export const gameStart = (gameData, rules) => {
     console.log(`'${answer}' is wrong answer ;(.Correct answer was '${rightAnswer}'.`);
     console.log(`Let's try again, ${playerName}!`);
     return false;
-  }
+  };
   const playerName = greeting();
   iter(playerName, 0);
 };
