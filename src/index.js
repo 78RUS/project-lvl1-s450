@@ -2,7 +2,6 @@
 import readlineSync from 'readline-sync';
 
 export const randInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-const rounds = 3;
 
 export const gameStart = (game, rules) => {
   console.log('Welcome to the Brain Games! \n');
@@ -11,11 +10,12 @@ export const gameStart = (game, rules) => {
   console.log(`Hello, ${playerName}!`);
 
   const iter = (playerName, rounds) => {
-    if (rounds === 3) {
+    const currentGame = game();
+    const maxRounds = currentGame['rounds']
+    if (rounds === maxRounds) {
       console.log(`Congratulations, ${playerName}!`);
       return true;
     }
-    const currentGame = game();
     const question = currentGame['question'];
     console.log(question);
     const answer = readlineSync.question('Your answer: ');
