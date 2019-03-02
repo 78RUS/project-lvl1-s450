@@ -1,36 +1,37 @@
 #!/usr/bin/node
 import readlineSync from 'readline-sync';
 
-export const randInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const maxRounds = 3;
 
-export const gameStart = (gameData, description) => {
-  const greeting = () => {
-    console.log('Welcome to the Brain Games! \n');
-    console.log(`${description}`);
-    const playerName = readlineSync.question('May I have your name? ');
-    console.log(`Hello, ${playerName}!`);
-    return playerName;
-  };
+const greeting = (description) => {
+  console.log('Welcome to the Brain Games! \n');
+  console.log(`${description}\n`);
+  const playerName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${playerName}!`);
+  return playerName;
+};
 
+const gameStart = (gameData, description) => {
   const iter = (playerName, currentRound) => {
     const currentGame = gameData();
-    const maxRounds = 3;
     if (currentRound === maxRounds) {
       console.log(`Congratulations, ${playerName}!`);
-      return true;
+      return;
     }
-    const { askQuestion } = currentGame;
-    console.log(askQuestion);
+    const { questionText } = currentGame;
+    console.log('Question:', questionText);
     const answer = readlineSync.question('Your answer: ');
     const { rightAnswer } = currentGame;
     if (answer === rightAnswer) {
       console.log('Correct!');
-      return iter(playerName, currentRound + 1);
+      iter(playerName, currentRound + 1);
+      return;
     }
     console.log(`'${answer}' is wrong answer ;(.Correct answer was '${rightAnswer}'.`);
     console.log(`Let's try again, ${playerName}!`);
-    return false;
   };
-  const playerName = greeting();
+  const playerName = greeting(description);
   iter(playerName, 0);
 };
+
+export default gameStart;

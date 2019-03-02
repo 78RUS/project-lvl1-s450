@@ -1,27 +1,39 @@
-import { randInt, gameStart } from '..';
+import gameStart from '..';
+import randInt from '../utils';
 
-const description = 'What number is missing in the range?\n';
+const description = 'What number is missing in the range?';
 
 const gameData = () => {
+  const makeRange = (rangeStart, rangeStep, rangeLen) => {
+    const iter = (range, step, maxLen) => {
+      if (range.length === maxLen) {
+        return range;
+      }
+      range.push(range[range.length - 1] + step);
+      return iter(range, step, maxLen);
+    };
+    const range = [];
+    range.push(rangeStart);
+    return iter(range, rangeStep, rangeLen);
+  };
+
+  const removeElement = (range) => {
+    const missedIndex = randInt(0, 10);
+    const missedNumber = range[missedIndex];
+    const newRange = range.slice();
+    newRange[missedIndex] = '..';
+    return { piercedRange: newRange, missedNumber };
+  };
+
   const rangeStart = randInt(1, 11);
   const rangeStep = randInt(2, 4);
   const rangeLen = 10;
-  let range = [];
-  range.push(rangeStart);
-  const makeRange = (progression, step, acc) => {
-    if (acc === rangeLen) {
-      return progression;
-    }
-    range.push(rangeStart + rangeStep * acc);
-    return makeRange(progression, rangeStep, acc + 1);
-  };
-  range = makeRange(range, rangeStep, 1);
-  const missedNumber = randInt(1, 11);
-  const rightAnswer = range[missedNumber].toString();
-  range[missedNumber] = '..';
-  const question = range.toString();
-  const askQuestion = `Question: ${question}`;
-  return { askQuestion, rightAnswer };
+  const range = makeRange(rangeStart, rangeStep, rangeLen);
+  const { piercedRange, missedNumber } = removeElement(range);
+  const rightAnswer = missedNumber.toString();
+  const question = piercedRange.toString();
+  const questionText = `${question}`;
+  return { questionText, rightAnswer };
 };
 
 export default () => gameStart(gameData, description);
