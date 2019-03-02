@@ -1,12 +1,11 @@
-import { randInt } from '..';
+import { randInt, gameStart } from '..';
 
-export const rules = 'Find the greatest common divisor of given numbers.\n';
+const description = 'Find the greatest common divisor of given numbers.\n';
 
-export const gameData = () => {
-  const rounds = 3;
+const gameData = () => {
   const x = randInt(1, 100);
   const y = randInt(1, 100);
-  const question = `Question: ${x} ${y}`;
+  const askQuestion = `Question: ${x} ${y}`;
   const gcd = (a, b) => {
     const iter = (num1, num2) => {
       if (num1 === num2) {
@@ -21,5 +20,7 @@ export const gameData = () => {
 
   const rightAnswer = gcd(x, y).toString();
 
-  return { question, rightAnswer, rounds };
+  return { askQuestion, rightAnswer };
 };
+
+export default () => gameStart(gameData, description);
