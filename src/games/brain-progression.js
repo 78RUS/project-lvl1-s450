@@ -31,8 +31,8 @@ const gameData = () => {
   const range = makeRange(rangeStart, rangeStep, rangeLen);
   const { piercedRange, missedNumber } = removeElement(range);
   const rightAnswer = missedNumber.toString();
-  const question = piercedRange.toString();
-  const questionText = `${question}`;
+  const questionData = piercedRange.toString();
+  const questionText = `${questionData}`;
   return { questionText, rightAnswer };
 };
 
