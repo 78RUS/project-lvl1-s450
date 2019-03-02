@@ -1,5 +1,5 @@
 import gameStart from '..';
-import randInt from '../utils'
+import randInt from '../utils';
 
 export const description = 'What is the result of the expression?';
 
