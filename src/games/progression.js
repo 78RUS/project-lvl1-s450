@@ -5,11 +5,11 @@ const description = 'What number is missing in the range?';
 
 const gameData = () => {
   const makeRange = (rangeStart, rangeStep, rangeLen) => {
-    const range = []
+    const range = [];
     for (let counter = 1; counter <= rangeLen; counter += 1) {
-      range.push(rangeStart + rangeStep * counter)
+      range.push(rangeStart + rangeStep * counter);
     }
-      return range;
+    return range;
     // const iter = (range, step, maxLen) => {
     //   if (range.length === maxLen) {
     //     return range;
