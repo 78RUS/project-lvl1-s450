@@ -5,16 +5,21 @@ const description = 'What number is missing in the range?';
 
 const gameData = () => {
   const makeRange = (rangeStart, rangeStep, rangeLen) => {
-    const iter = (range, step, maxLen) => {
-      if (range.length === maxLen) {
-        return range;
-      }
-      const newRange = range.slice();
-      newRange.push(rangeStart + step * range.length);
-      return iter(newRange, step, maxLen);
-    };
     const range = [];
-    return iter(range, rangeStep, rangeLen);
+    for (let counter = 1; counter <= rangeLen; counter += 1) {
+      range.push(rangeStart + rangeStep * counter);
+    }
+    return range;
+    // const iter = (range, step, maxLen) => {
+    //   if (range.length === maxLen) {
+    //     return range;
+    //   }
+    //   const newRange = range.slice();
+    //   newRange.push(rangeStart + step * range.length);
+    //   return iter(newRange, step, maxLen);
+    // };
+    // const range = [];
+    // return iter(range, rangeStep, rangeLen);
   };
 
   const removeElement = (range) => {
