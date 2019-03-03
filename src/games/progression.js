@@ -9,7 +9,7 @@ const gameData = () => {
       if (range.length === maxLen) {
         return range;
       }
-      const newRange = range.slice()
+      const newRange = range.slice();
       newRange.push(rangeStart + step * range.length);
       return iter(newRange, step, maxLen);
     };
