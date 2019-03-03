@@ -4,7 +4,7 @@ import randInt from '../utils';
 const description = 'What number is missing in the range?';
 
 const gameData = () => {
-  const makeRange = (rangeStart, rangeStep, rangeLen) => {  // best practice
+  const makeRange = (rangeStart, rangeStep, rangeLen) => { //  best practice
     const iter = (range, step, maxLen) => {
       if (range.length === maxLen) {
         return range;
