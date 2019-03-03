@@ -9,16 +9,16 @@ const gameData = () => {
       if (range.length === maxLen) {
         return range;
       }
-      range.push(range[range.length - 1] + step);
-      return iter(range, step, maxLen);
+      const newRange = range.slice()
+      newRange.push(rangeStart + step * range.length);
+      return iter(newRange, step, maxLen);
     };
     const range = [];
-    range.push(rangeStart);
     return iter(range, rangeStep, rangeLen);
   };
 
   const removeElement = (range) => {
-    const missedIndex = randInt(0, 10);
+    const missedIndex = randInt(0, range.length);
     const missedNumber = range[missedIndex];
     const newRange = range.slice();
     newRange[missedIndex] = '..';
