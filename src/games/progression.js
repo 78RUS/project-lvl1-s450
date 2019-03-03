@@ -4,16 +4,34 @@ import randInt from '../utils';
 const description = 'What number is missing in the range?';
 
 const gameData = () => {
-  const makeRange = (rangeStart, rangeStep, rangeLen) => {
-    const range = [];
-    for (let counter = 1; counter <= rangeLen; counter += 1) {
-      range.push(rangeStart + rangeStep * counter);
-    }
-    return range;
+  const makeRange = (rangeStart, rangeStep, rangeLen) => { //  best practice
+    const iter = (range, step, maxLen) => {
+      if (range.length === maxLen) {
+        return range;
+      }
+      const nextNumber = rangeStart + rangeStep * range.length;
+      return iter([...range, nextNumber], step, maxLen);
+    };
+
+    return iter([rangeStart], rangeStep, rangeLen);
   };
+  // const makeRange = (rangeStart, rangeStep, rangeLen) => {
+  //   const iter = (range, step, maxLen) => {
+  //     if (range.length === maxLen) {
+  //       return range;
+  //     }
+  //     const nextNumber = rangeStart + rangeStep * range.length
+  //     const concRange = range.concat(nextNumber);
+  //     // range.push(rangeStart + rangeStep * range.length);
+  //     return iter(concRange, step, maxLen);
+  //   };
+  //   let range = [];
+  //   range = range.concat(rangeStart);
+  //   return iter(range, rangeStep, rangeLen);
+  // };
 
   const removeElement = (range) => {
-    const missedIndex = randInt(0, range.length);
+    const missedIndex = randInt(0, 10);
     const missedNumber = range[missedIndex];
     const newRange = range.slice();
     newRange[missedIndex] = '..';
@@ -26,8 +44,8 @@ const gameData = () => {
   const range = makeRange(rangeStart, rangeStep, rangeLen);
   const { piercedRange, missedNumber } = removeElement(range);
   const rightAnswer = missedNumber.toString();
-  const questionData = piercedRange.toString();
-  const questionText = `${questionData}`;
+  const question = piercedRange.toString();
+  const questionText = `${question}`;
   return { questionText, rightAnswer };
 };
 
