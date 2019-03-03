@@ -10,16 +10,6 @@ const gameData = () => {
       range.push(rangeStart + rangeStep * counter);
     }
     return range;
-    // const iter = (range, step, maxLen) => {
-    //   if (range.length === maxLen) {
-    //     return range;
-    //   }
-    //   const newRange = range.slice();
-    //   newRange.push(rangeStart + step * range.length);
-    //   return iter(newRange, step, maxLen);
-    // };
-    // const range = [];
-    // return iter(range, rangeStep, rangeLen);
   };
 
   const removeElement = (range) => {
